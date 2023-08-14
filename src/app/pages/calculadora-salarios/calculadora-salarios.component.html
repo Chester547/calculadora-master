@@ -1,0 +1,72 @@
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Calculadora de salario</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+<!--     <ion-item>
+      <ion-label position="floating">Sueldo básico</ion-label>
+      <ion-input type="number" [(ngModel)]="salarioBase"></ion-input>
+    </ion-item> -->
+  
+<!--     <ion-item>
+      <ion-label position="floating">Horas mensuales</ion-label>
+      <ion-input type="number" [(ngModel)]="horasMensuales"></ion-input>
+    </ion-item> -->
+  
+    <ion-item>
+      <ion-label position="floating">Horas extras</ion-label>
+      <ion-input type="number" [(ngModel)]="horasExtra"></ion-input>
+      <ion-button expand="full" (click)="calculoHoraExtra()">Calcular</ion-button>
+      <ion-text>Monto: ${{ recargos }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Turno nocturno</ion-label>
+      <ion-input type="number" [(ngModel)]="horasExtra"></ion-input>
+      <ion-button expand="full" (click)="calculoHoraExtra()">Calcular</ion-button>
+      <ion-text>Monto: ${{ recargos }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fines de semana y feriados</ion-label>
+      <ion-input type="number" [(ngModel)]="horasExtra"></ion-input>
+      <ion-button expand="full" (click)="calculoHoraExtra()">Calcular</ion-button>
+      <ion-text>Monto: ${{ recargos }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Subsidio por antigüedad</ion-label>
+      <ion-input type="number" [(ngModel)]="horasExtra"></ion-input>
+      <ion-button expand="full" (click)="calculoHoraExtra()">Calcular</ion-button>
+      <ion-text>Monto: ${{ recargos }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Subsidio familiar</ion-label>
+      <ion-input type="number" [(ngModel)]="horasExtra"></ion-input>
+      <ion-button expand="full" (click)="calculoHoraExtra()">Calcular</ion-button>
+      <ion-text>Monto: ${{ recargos }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Transporte</ion-label>
+      <ion-input type="number" [(ngModel)]="horasExtra"></ion-input>
+      <ion-button expand="full" (click)="calculoHoraExtra()">Calcular</ion-button>
+      <ion-text>Monto: ${{ recargos }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Alimentación</ion-label>
+      <ion-input type="number" [(ngModel)]="horasExtra"></ion-input>
+      <ion-button expand="full" (click)="calculoHoraExtra()">Calcular</ion-button>
+      <ion-text>Monto: ${{ recargos }}</ion-text>
+    </ion-item>
+
+    
+    <!-- Add input fields and display for other components like surcharges, night shift, weekends, etc. -->
+  
+    <ion-button expand="full" (click)="calculoPagoMensualTotal()">Calcular el pago total del mes</ion-button>
+    <!-- <ion-button expand="full">Calcular</ion-button> -->
+  
+    <ion-item>
+      <ion-label>Salario total:</ion-label>
+      <ion-text>{{ totalPagoMensual }}</ion-text>
+    </ion-item>
+  </ion-content>
+  

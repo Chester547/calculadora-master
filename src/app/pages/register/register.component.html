@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>Cédula</ion-label>
+          <ion-input type="number" [(ngModel)]="newUser.cedula"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Name</ion-label>
+          <ion-input type="text" [(ngModel)]="newUser.nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input type="email" [(ngModel)]="newUser.email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="newUser.password" type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Confirmar password</ion-label>
+          <ion-input type="password" [(ngModel)]="repassword" type="password"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="full" color="primary" (click)="registro()">Registrar</ion-button>
+  <ion-button expand="full" color="primary" (click)="logClick()">Inicia sesión aquí</ion-button>
+
+</ion-content>

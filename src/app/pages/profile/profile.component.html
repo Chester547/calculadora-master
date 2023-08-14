@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+  <ion-list *ngIf="info">
+    <ion-item>
+      <img src="{{info.newFile}}" alt="Imagen de perfil">
+    </ion-item>
+    <ion-item>
+      <ion-label>ID</ion-label>
+      <ion-note slot="end">{{ info.cedula }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-note slot="end">{{ info.nombre }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-note slot="end">{{ info.email }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cambiar contraseña</ion-label>
+      <ion-input slot="end" type="password" [(ngModel)]="newPassword"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-card-content>
+</ion-card>
+
+<!-- <ion-button expand="full" color="primary" (click)="saveChanges()">Save Changes</ion-button> -->
+<ion-button expand="full" color="primary">Guardar cambios</ion-button>
+<ion-button expand="full" color="primary" (click)="logout()">Cerrar sesión {{correo}}</ion-button>
+
+</ion-content>

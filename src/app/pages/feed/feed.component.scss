@@ -1,0 +1,37 @@
+ion-content {
+  --background: #f0f0f0;
+}
+
+ion-list {
+  margin-top: 20px;
+  ion-item {
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+ion-item {
+  ion-label {
+    font-weight: bold;
+  }
+}
+
+ion-header {
+  ion-toolbar {
+    --background: #007BFF;
+  }
+  ion-title {
+    color: white;
+  }
+}
+
+ion-item-detail {
+  color: #007BFF;
+  font-size: 0.9rem;
+}
+
+ion-fab-button {
+  --background: #0056b3;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

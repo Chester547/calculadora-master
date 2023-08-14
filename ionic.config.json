@@ -1,0 +1,7 @@
+{
+  "name": "city-res",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
