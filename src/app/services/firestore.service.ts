@@ -63,4 +63,25 @@ export class FirestoreService {
   getUsersFeed(){
     return this.editUser;
   }
+
+  setEventData(eventName: string, eventData: any[]): void {
+    const eventCollection = this.firestore.collection('events');
+    const eventDoc = eventCollection.doc(eventName);
+
+    // Store event data in Firestore
+    eventDoc.set({ data: eventData }).then(() => {
+      console.log('Event data stored successfully.');
+    });
+  }
+
+  finishEvent(eventName: string): void {
+    const eventCollection = this.firestore.collection('events');
+    const eventDoc = eventCollection.doc(eventName);
+
+    // Update the status of the event to mark it as finished
+    eventDoc.update({ status: 'finished' }).then(() => {
+      console.log('Event marked as finished.');
+    });
+  }
+
 }

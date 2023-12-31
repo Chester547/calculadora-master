@@ -11,6 +11,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DetalleComponent } from './pages/detalle/detalle.component';
 import { CalculadoraSalariosComponent } from './pages/calculadora-salarios/calculadora-salarios.component';
 import { NumberCalculatorComponent } from './pages/number-calculator/number-calculator.component';
+import { InfoupComponent } from './pages/infoup/infoup.component';
+import { ShoweventComponent } from './pages/showevent/showevent.component';
 
 const uidAdmin = 'LvtwNStI0wc76vf2oibiaZ0mgkx1';
 const onlyAdmin = () => map ((user: any) => !!user && (user.uid === uidAdmin));
@@ -25,6 +27,8 @@ const routes: Routes = [
   {path: 'detalle', component: DetalleComponent, canActivate: [AngularFireAuthGuard]},
   {path: 'calculadora', component: CalculadoraSalariosComponent, canActivate: [AngularFireAuthGuard]},
   {path: 'testcal', component: NumberCalculatorComponent, canActivate: [AngularFireAuthGuard]},
+  {path: 'cargainfo', component: InfoupComponent, canActivate: [AngularFireAuthGuard]},
+  {path: 'event', component: ShoweventComponent, canActivate: [AngularFireAuthGuard]},
   {path: '**', redirectTo: 'login', pathMatch: 'full'},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,12 @@ export class FirestorageService {
        )
       .subscribe();
       });
+  }
+
+  uploadEventData(eventName: string, eventData: any[]): void {
+    // Use AngularFireStorage for uploading data to Firebase Storage if needed
+    // Example: this.storage.upload(`events/${eventName}.csv`, /* file data */);
+
+    console.log('Event data uploaded to Firebase Storage.');
   }
 }

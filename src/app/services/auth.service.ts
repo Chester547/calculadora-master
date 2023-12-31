@@ -50,4 +50,25 @@ export class AuthService {
   getUser(id: string): Observable<any> {
     return this.firestore.collection('usuarios').doc(id).valueChanges();
   }
+
+// Assuming this is part of your Angular service (e.g., UserService)
+async deleteUser(id: string): Promise<void> {
+  const user = await this.auth.currentUser;
+  if (user) {
+    // Show confirmation alert
+    const confirmed = window.confirm('Are you sure you want to delete this user?');
+
+    if (confirmed) {
+      // Delete user data in Firestore
+      const userRef = this.firestore.collection('usuarios').doc(id);
+      return userRef.delete();
+    } else {
+      // User canceled the action
+      return Promise.resolve();
+    }
+  } else {
+    throw new Error('Usuario no autenticado');
+  }
+}
+
 }

@@ -38,30 +38,19 @@ export class PanelComponent implements OnInit {
   }
 
   dataUp(){
-    this.router.navigate(['/carga'])
+    this.router.navigate(['/cargainfo'])
   }
 
   feed(){
     this.router.navigate(['/feed'])
   }
 
-  userManager(){
-    this.router.navigate(['/control'])
-  }
- 
   profile(){
     this.router.navigate(['/perfil'])
   }
-
-  reghoras(){
-    this.router.navigate(['/reg-horas'])
-  }
-
-  calculadora(){
-    this.router.navigate(['/calculadora'])
-  }
-  numeros(){
-    this.router.navigate(['/testcal'])
+ 
+  showEvent(){
+    this.router.navigate(['/event'])
   }
 
   logout(){

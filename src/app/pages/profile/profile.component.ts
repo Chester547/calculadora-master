@@ -61,6 +61,15 @@ getInfoUser(){
   })
 }
 
+deleteUser(id: string) {
+  this.authService.deleteUser(id).then(() => {
+    this.authService.getUid();
+  }).catch(error => {
+    console.error('Error deleting user:', error);
+    // Handle error as needed
+  });
+}
+
 regClick(){
   this.router.navigate(['/registro'])
 }

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Carga de evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <h2>Subir archivo con informacón del evento y sus asistentes</h2>
+    <h4>Archivos excel o CSV solamente</h4>
+  
+    <input type="file" (change)="onFileSelected($event)" />
+  
+    <button (click)="uploadFile()">Subir archivo</button>
+  
+</ion-content>

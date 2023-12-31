@@ -22,6 +22,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { HttpClientModule } from '@angular/common/http';
 import { DetalleComponent } from './pages/detalle/detalle.component';
+import { InfoupComponent } from './pages/infoup/infoup.component';
+import { ShoweventComponent } from './pages/showevent/showevent.component';
+import { Papa } from 'ngx-papaparse';
 
 @NgModule({
   declarations: [
@@ -32,19 +35,22 @@ import { DetalleComponent } from './pages/detalle/detalle.component';
     DataUpComponent,
     PanelComponent,
     ProfileComponent,
-    DetalleComponent
+    DetalleComponent,
+    InfoupComponent,
+    ShoweventComponent
   ],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
     FormsModule,
+    BrowserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     HttpClientModule,
     AngularFireDatabaseModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }, AngularFireStorageModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }, AngularFireStorageModule, Papa],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
