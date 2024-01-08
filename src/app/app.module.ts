@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent} from './pages/register/register.component';
-import { FeedComponent } from './pages/feed/feed.component';
 import { PanelComponent } from './pages/panel/panel.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -20,7 +19,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { HttpClientModule } from '@angular/common/http';
-import { DetalleComponent } from './pages/detalle/detalle.component';
 import { InfoupComponent } from './pages/infoup/infoup.component';
 import { ShoweventComponent } from './pages/showevent/showevent.component';
 import { Papa } from 'ngx-papaparse';
@@ -30,10 +28,8 @@ import { Papa } from 'ngx-papaparse';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    FeedComponent,
     PanelComponent,
     ProfileComponent,
-    DetalleComponent,
     InfoupComponent,
     ShoweventComponent
   ],
