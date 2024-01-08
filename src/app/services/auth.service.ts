@@ -40,7 +40,7 @@ export class AuthService {
   async updateUser(id: string, newData: any): Promise<void> {
     const user = await this.auth.currentUser;
     if (user) {
-      // Update user data in Firestore
+      // Update user data
       const userRef = this.firestore.collection('usuarios').doc(id);
       return userRef.update(newData);
     } else {
@@ -51,19 +51,18 @@ export class AuthService {
     return this.firestore.collection('usuarios').doc(id).valueChanges();
   }
 
-// Assuming this is part of your Angular service (e.g., UserService)
 async deleteUser(id: string): Promise<void> {
   const user = await this.auth.currentUser;
   if (user) {
     // Show confirmation alert
-    const confirmed = window.confirm('Are you sure you want to delete this user?');
+    const confirmed = window.confirm('Esta seguro de eliminar este usuario?');
 
     if (confirmed) {
-      // Delete user data in Firestore
+      // Delete user data
       const userRef = this.firestore.collection('usuarios').doc(id);
       return userRef.delete();
     } else {
-      // User canceled the action
+      // Usuario cancela el borrado
       return Promise.resolve();
     }
   } else {

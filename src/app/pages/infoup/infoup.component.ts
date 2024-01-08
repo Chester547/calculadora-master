@@ -11,6 +11,7 @@ import { FirestorageService } from 'src/app/services/firestorage.service';
 export class InfoupComponent {
   selectedFile: File | undefined;
   eventData: any[] = [];
+  eventName: any[] = [];
 
   constructor(
     private papa: Papa,
@@ -25,6 +26,7 @@ export class InfoupComponent {
   uploadFile(): void {
     if (this.selectedFile) {
       this.parseFile(this.selectedFile);
+      const eventName = this.eventData[0];
     } else {
       console.error('No existe archivo');
     }
@@ -33,21 +35,23 @@ export class InfoupComponent {
   private parseFile(file: File): void {
     this.papa.parse(file, {
       complete: (result) => {
-        // Assuming the first row contains headers and the data starts from the second row
+        // Aqui definimos la lectura de los datos de los asistentes y los mostramos en consola (Chrome CTRL+SHIFT+I consola)
+        this.eventName = result.data.slice(0);
         this.eventData = result.data.slice(1);
-        console.log('Parsed data:', this.eventData);
+        console.log('Evento:', this.eventName[0]);
+        console.log('Datos leidos:', this.eventData);
       },
     });
   }
 
   confirmEvent(): void {
-    // Add code to handle confirmation and store data in Firebase
-    if (confirm('Are you sure all guests attended?')) {
-      const eventName = this.eventData[0]?.name; // Assuming the event name is in the first row
+    // Agregamos el codigo para confirmar la informacion y enviarla a firestore
+    if (confirm('¿Esta seguro de la lista agregada?')) {
+      const eventName = this.eventData[0]?.name; // Consideramos que el nombre del eventto se encuentra en la primera fila, definimos coomo 0
       if (eventName) {
         this.storeEventData(eventName, this.eventData);
       } else {
-        console.error('Event name not found in data.');
+        console.error('Nombre del evento no encontrado.');
       }
     }
   }
@@ -55,20 +59,16 @@ export class InfoupComponent {
 /*   private storeEventData(eventName: string, eventData: any[]): void {
     this.firestoreService.setEventData(eventName, eventData);
 
-    // Optionally, store event data in Firebase Storage
     this.firestorageService.uploadEventData(eventName, eventData);
   } */
 
   private storeEventData(eventName: string, eventData: any[]): void {
     this.firestoreService.setEventData(eventName, eventData);
 
-    // Optionally, store event data in Firebase Storage
     this.firestorageService.uploadEventData(eventName, eventData);
 
-/*     // Emit eventConfirmed to notify the parent component (if needed)
-    this.eventConfirmed.emit(eventName);
-
-    // Navigate to EventDetailsComponent
+/*     
+    // Ruta a la pantalla del evento
     this.router.navigate(['/event-details', eventName]); */
   }
 }

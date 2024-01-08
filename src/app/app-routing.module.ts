@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { DataUpComponent } from './pages/data-up/data-up.component';
 import { FeedComponent } from './pages/feed/feed.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PanelComponent } from './pages/panel/panel.component';
@@ -21,7 +20,6 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'registro', component: RegisterComponent },
   {path: 'feed', component: FeedComponent, canActivate: [AngularFireAuthGuard] },
-  {path: 'carga', component: DataUpComponent, ...canActivate(onlyAdmin) },
   {path: 'panel', component: PanelComponent, canActivate: [AngularFireAuthGuard] },
   {path: 'perfil', component: ProfileComponent, canActivate: [AngularFireAuthGuard]},
   {path: 'detalle', component: DetalleComponent, canActivate: [AngularFireAuthGuard]},

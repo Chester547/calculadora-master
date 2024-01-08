@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent} from './pages/register/register.component';
 import { FeedComponent } from './pages/feed/feed.component';
-import { DataUpComponent } from './pages/data-up/data-up.component';
 import { PanelComponent } from './pages/panel/panel.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -32,7 +31,6 @@ import { Papa } from 'ngx-papaparse';
     LoginComponent,
     RegisterComponent,
     FeedComponent,
-    DataUpComponent,
     PanelComponent,
     ProfileComponent,
     DetalleComponent,

@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Carga de evento</ion-title>
   </ion-toolbar>
@@ -13,4 +13,31 @@
   
     <button (click)="uploadFile()">Subir archivo</button>
   
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Información de evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="upload-container">
+    <label class="file-input-label" for="fileInput">
+      Seleccionar archivo
+    </label>
+    <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".pdf, .doc, .docx, .txt" />
+
+    <ion-card class="upload-card" *ngIf="selectedFile">
+      <ion-card-header>
+        Archivo seleccionado
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>{{ selectedFile.name }}</ion-label>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="full" (click)="uploadFile()">Subir</ion-button>
+  </div>
 </ion-content>
+
