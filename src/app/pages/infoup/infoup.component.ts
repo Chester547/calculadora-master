@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Papa } from 'ngx-papaparse';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FirestorageService } from 'src/app/services/firestorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-infoup',
@@ -16,7 +17,8 @@ export class InfoupComponent {
   constructor(
     private papa: Papa,
     private firestoreService: FirestoreService,
-    private firestorageService: FirestorageService
+    private firestorageService: FirestorageService,
+    private router: Router
   ) {}
 
   onFileSelected(event: any): void {
@@ -40,35 +42,8 @@ export class InfoupComponent {
         this.eventData = result.data.slice(1);
         console.log('Evento:', this.eventName[0]);
         console.log('Datos leidos:', this.eventData);
+        this.router.navigate(['/eventos']);
       },
     });
-  }
-
-  confirmEvent(): void {
-    // Agregamos el codigo para confirmar la informacion y enviarla a firestore
-    if (confirm('¿Esta seguro de la lista agregada?')) {
-      const eventName = this.eventData[0]?.name; // Consideramos que el nombre del eventto se encuentra en la primera fila, definimos coomo 0
-      if (eventName) {
-        this.storeEventData(eventName, this.eventData);
-      } else {
-        console.error('Nombre del evento no encontrado.');
-      }
-    }
-  }
-
-/*   private storeEventData(eventName: string, eventData: any[]): void {
-    this.firestoreService.setEventData(eventName, eventData);
-
-    this.firestorageService.uploadEventData(eventName, eventData);
-  } */
-
-  private storeEventData(eventName: string, eventData: any[]): void {
-    this.firestoreService.setEventData(eventName, eventData);
-
-    this.firestorageService.uploadEventData(eventName, eventData);
-
-/*     
-    // Ruta a la pantalla del evento
-    this.router.navigate(['/event-details', eventName]); */
   }
 }

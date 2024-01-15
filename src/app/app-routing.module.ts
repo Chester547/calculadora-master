@@ -9,7 +9,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { InfoupComponent } from './pages/infoup/infoup.component';
 import { ShoweventComponent } from './pages/showevent/showevent.component';
 
-const uidAdmin = 'LvtwNStI0wc76vf2oibiaZ0mgkx1';
+const uidAdmin = 'bSCs6KqOscRwLAtQxyrOSkuuUug2';
 const onlyAdmin = () => map ((user: any) => !!user && (user.uid === uidAdmin));
 
 const routes: Routes = [
@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'panel', component: PanelComponent, canActivate: [AngularFireAuthGuard] },
   {path: 'perfil', component: ProfileComponent, canActivate: [AngularFireAuthGuard]},
   {path: 'cargainfo', component: InfoupComponent, canActivate: [AngularFireAuthGuard]},
-  {path: 'event', component: ShoweventComponent, canActivate: [AngularFireAuthGuard]},
+  {path: 'eventos', component: ShoweventComponent, canActivate: [AngularFireAuthGuard]},
   {path: '**', redirectTo: 'login', pathMatch: 'full'},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];

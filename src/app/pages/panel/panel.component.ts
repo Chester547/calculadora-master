@@ -50,7 +50,7 @@ export class PanelComponent implements OnInit {
   }
  
   showEvent(){
-    this.router.navigate(['/event'])
+    this.router.navigate(['/eventos'])
   }
 
   logout(){

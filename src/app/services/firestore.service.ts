@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FileData, UserData } from '../models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
 
-  editMuseo: FileData;
+  editData: FileData;
   editUser: UserData;
 
   constructor(private firestore: AngularFirestore,
@@ -48,40 +49,16 @@ export class FirestoreService {
    return collection.valueChanges(); 
   }
 
-  setMuseoFeed(fileData: FileData){
-    this.editMuseo = fileData;
-  }
-
   setUserFeed(userData: UserData){
     this.editUser = userData;
   }
-  
-  getMuseoFeed(){
-    return this.editMuseo;
+
+  getCollections<T>(path: string): AngularFirestoreCollection<T> {
+    return this.firestore.collection<T>(path);
+  }
+
+  setEventFeed(fileData: FileData){
+    this.editData = fileData;
   }
   
-  getUsersFeed(){
-    return this.editUser;
-  }
-
-  setEventData(eventName: string, eventData: any[]): void {
-    const eventCollection = this.firestore.collection('events');
-    const eventDoc = eventCollection.doc(eventName);
-
-    // Store event data in Firestore
-    eventDoc.set({ data: eventData }).then(() => {
-      console.log('Event data stored successfully.');
-    });
-  }
-
-  finishEvent(eventName: string): void {
-    const eventCollection = this.firestore.collection('events');
-    const eventDoc = eventCollection.doc(eventName);
-
-    // Update the status of the event to mark it as finished
-    eventDoc.update({ status: 'finished' }).then(() => {
-      console.log('Event marked as finished.');
-    });
-  }
-
 }

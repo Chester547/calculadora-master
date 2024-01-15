@@ -12,11 +12,9 @@ export interface UserData {
     uuid:string;
 }
 export interface FileData {
-    categoria:string;
-    nombre:string;
-    newFile:string;
-    detalle:string;
     id : string;
+    asistencia:boolean;
+    nombre:string;
 }
 export interface PayCalculationOptions {
     workingDaysPerMonth: number;
