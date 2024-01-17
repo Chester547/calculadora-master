@@ -1,4 +1,4 @@
-/* export const environment = {
+export const environment = {
   production: false,
   firebaseConfig: {
   apiKey: "AIzaSyBOQxDitKj_eMtze7YBt3bRLts6VS1oz-0",
@@ -9,12 +9,12 @@
   messagingSenderId: "850354899081",
   appId: "1:850354899081:web:48514f24b94c77172f9e58"
   },
-  adminuid: 'ddJK6uY5qDhKvec9iQ6fpnVvH372',
+  adminuid: 'NkHvXiRmJ2UC5RpWuZSReeUUBe62',
   
-}; */
+};
 
 
-export const environment = {
+/* export const environment = {
   production: false,
   firebaseConfig: {
   apiKey: "AIzaSyAekeJ02VPdEl06BXX5U2G5UIry4c890MM",
@@ -27,4 +27,4 @@ export const environment = {
   },
   adminuid: 'bSCs6KqOscRwLAtQxyrOSkuuUug2',
   
-};
+}; */

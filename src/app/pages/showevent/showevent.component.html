@@ -5,18 +5,19 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="documentIds.length > 0">
-    <h2>Lista de Eventos:</h2>
+  <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+  <div *ngIf="!isLoading && documentIds.length > 0">
     <ion-list>
       <ion-card *ngFor="let document of documentIds">
         <ion-card-content>
-          Evento: {{ document.fullId }}<br>
+          Evento: {{ document.fullId }}
         </ion-card-content>
         <ion-button expand="full" color="primary" (click)="onButtonClick(document.fullId)">Acceder</ion-button>
       </ion-card>
     </ion-list>
   </div>
-  <div *ngIf="documentIds.length === 0">
+  <div *ngIf="!isLoading && documentIds.length === 0">
     <p>No se encontraron eventos.</p>
   </div>
+  <ion-button expand="full" color="primary" (click)="panel()">Volver</ion-button>
 </ion-content>

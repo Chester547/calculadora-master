@@ -12,7 +12,7 @@ import { RegisterComponent} from './pages/register/register.component';
 import { PanelComponent } from './pages/panel/panel.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AngularFireModule } from '@angular/fire/compat';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -43,7 +43,8 @@ import { Papa } from 'ngx-papaparse';
     AngularFirestoreModule,
     AngularFireStorageModule,
     HttpClientModule,
-    AngularFireDatabaseModule],
+    AngularFireDatabaseModule,
+    ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }, AngularFireStorageModule, Papa],
   bootstrap: [AppComponent],
 })

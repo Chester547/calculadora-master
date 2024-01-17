@@ -4,6 +4,7 @@ import { FileData } from 'src/app/models';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { environment } from 'src/environments/environment';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-showevent',
@@ -22,8 +23,14 @@ export class ShoweventComponent implements OnInit{
   datas:string;
   documentIds: { fullId: string, slicedId: string }[] = [];
   eventData: any[] = [];
+  isLoading = true;
 
-  constructor(private authService: AuthService, private firestoreService :FirestoreService, private router:Router, private activedRoute: ActivatedRoute) {
+  constructor(private authService: AuthService, 
+              private firestoreService :FirestoreService, 
+              private router:Router, 
+              private activedRoute: ActivatedRoute,  
+              private loadingController: LoadingController)
+  {
     this.authService.authState().subscribe( res => {
       console.log('res => ', res);
       if (res) {
@@ -32,7 +39,7 @@ export class ShoweventComponent implements OnInit{
         this.admin = false
       }
     })
-   }
+  }
 
   ngOnInit() {
     this.authService.authState().subscribe(res => {
@@ -46,44 +53,30 @@ export class ShoweventComponent implements OnInit{
     console.log('id', this.idd);
   }
 
-/*   getDocumentIds(){
-    const collectionPath = 'eventos'; // Replace with your actual collection path
-  
+  async getDocumentIds(): Promise<void> {
+    const loading = await this.loadingController.create({
+      message: 'Cargando eventos...',
+    });
+    await loading.present();
     this.firestoreService
-      .getCollections<any>(collectionPath)
+      .getCollections<any>('eventos')
       .snapshotChanges()
       .subscribe(
         snapshots => {
-          // Retrieve all document IDs
-          this.documentIds = snapshots.map(snapshot => snapshot.payload.doc.id);
-          console.log('Document IDs:', this.documentIds);
-        },
-        error => {
-          console.error('Error fetching documents:', error);
-        }
-      );
-  } */
-
-  getDocumentIds(): void {
-    const collectionPath = 'eventos'; // Replace with your actual collection path
-  
-    this.firestoreService
-      .getCollections<any>(collectionPath)
-      .snapshotChanges()
-      .subscribe(
-        snapshots => {
-          // Retrieve all document IDs and create an array with both full and sliced IDs
           this.documentIds = snapshots.map(snapshot => ({
             fullId: snapshot.payload.doc.id,
-            slicedId: snapshot.payload.doc.id.slice(0, 5), // Adjust the slice parameters as needed
+            slicedId: snapshot.payload.doc.id.slice(0, 5),
           }));
+          this.isLoading = false; // Set isLoading to false once data is loaded
+          loading.dismiss(); // Dismiss the loading indicator
         },
         error => {
-          console.error('Error fetching documents:', error);
+          console.error('Error al obtener eventos:', error);
+          this.isLoading = false; // Set isLoading to false in case of an error
+          loading.dismiss(); // Dismiss the loading indicator
         }
       );
   }
-
   ionViewDidEnter() {
     this.getDocumentIds();
   }
@@ -92,9 +85,13 @@ export class ShoweventComponent implements OnInit{
     console.log("mensaje");
   }
 
-  onButtonClick(slicedId:any) {
-    console.log('Button clicked for:', slicedId);
+  onButtonClick(fullId:any) {
+    console.log('Boton presionado para el evento:', fullId);
     // You can add navigation logic or perform other actions here
+  }
+
+  panel(){
+    this.router.navigate(['/panel'])
   }
 
 }

@@ -3,6 +3,9 @@ import { Papa } from 'ngx-papaparse';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FirestorageService } from 'src/app/services/firestorage.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoadingController, ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-infoup',
@@ -13,19 +16,36 @@ export class InfoupComponent {
   selectedFile: File | undefined;
   eventData: any[] = [];
   eventName: any[] = [];
+  eventNameInput:string;
+
+  uploadForm: FormGroup;
+  isLoading = false;
+
+  assistantsList: { name: string, lastname: string }[] = []; // Adjust this type as per your actual structure
+
 
   constructor(
     private papa: Papa,
     private firestoreService: FirestoreService,
     private firestorageService: FirestorageService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private fb: FormBuilder,
+    private loadingController: LoadingController,
+    private toastController: ToastController
+  ) 
+{
+  this.uploadForm = this.fb.group({
+    eventName: ['', Validators.required],
+    assistants: ['', Validators.required],
+    // Add other fields as needed
+  });
+}
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
   }
 
-  uploadFile(): void {
+  /* uploadFile(): void {
     if (this.selectedFile) {
       this.parseFile(this.selectedFile);
       const eventName = this.eventData[0];
@@ -46,4 +66,47 @@ export class InfoupComponent {
       },
     });
   }
+
+  async uploadDocument(): Promise<void> {
+    if (this.uploadForm.valid && !this.isLoading) {
+      const eventData = this.uploadForm.value;
+      const eventId = eventData.eventName; // Use the event name as the document ID
+
+      const loading = await this.loadingController.create({
+        message: 'Uploading document...',
+      });
+      await loading.present();
+
+      this.firestoreService
+        .getCollections<any>('events')
+        .doc(eventId)
+        .set(eventData)
+        .then(() => {
+          console.log('Document uploaded successfully!');
+          this.presentToast('Document uploaded successfully!');
+          this.uploadForm.reset();
+        })
+        .catch(error => {
+          console.error('Error uploading document:', error);
+          this.presentToast('Error uploading document');
+        })
+        .finally(() => {
+          loading.dismiss();
+          this.isLoading = false;
+        });
+    } else {
+      console.error('Form is invalid or upload in progress. Cannot upload document.');
+      this.presentToast('Invalid form or upload in progress');
+    }
+  }
+
+  async presentToast(message: string): Promise<void> {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      position: 'top',
+    });
+    await toast.present();
+  } */
+ 
 }

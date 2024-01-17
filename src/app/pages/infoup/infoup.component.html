@@ -21,23 +21,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div class="upload-container">
-    <label class="file-input-label" for="fileInput">
-      Seleccionar archivo
-    </label>
-    <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".pdf, .doc, .docx, .txt" />
-
-    <ion-card class="upload-card" *ngIf="selectedFile">
-      <ion-card-header>
-        Archivo seleccionado
-      </ion-card-header>
-      <ion-card-content>
-        <ion-label>{{ selectedFile.name }}</ion-label>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-button expand="full" (click)="uploadFile()">Subir</ion-button>
-  </div>
+<ion-content>
+  <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+  <form [formGroup]="uploadForm">
+    <ion-item>
+      <ion-label position="floating">Event Name</ion-label>
+      <ion-input formControlName="eventName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Upload Assistants List (CSV or TXT)</ion-label><br/>
+      <input type="file" accept=".csv, .txt" (change)="handleFileInput($event)">
+    </ion-item>
+    <ion-button expand="full" (click)="uploadDocument()">Upload Document</ion-button>
+  </form>
 </ion-content>
-

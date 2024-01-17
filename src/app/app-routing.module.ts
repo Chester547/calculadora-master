@@ -9,7 +9,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { InfoupComponent } from './pages/infoup/infoup.component';
 import { ShoweventComponent } from './pages/showevent/showevent.component';
 
-const uidAdmin = 'bSCs6KqOscRwLAtQxyrOSkuuUug2';
+const uidAdmin = 'NkHvXiRmJ2UC5RpWuZSReeUUBe62';
 const onlyAdmin = () => map ((user: any) => !!user && (user.uid === uidAdmin));
 
 const routes: Routes = [
