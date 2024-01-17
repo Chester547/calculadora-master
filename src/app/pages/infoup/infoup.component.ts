@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-infoup',
   templateUrl: './infoup.component.html',
@@ -40,6 +41,10 @@ export class InfoupComponent {
     // Add other fields as needed
   });
 }
+
+  panel(){
+    this.router.navigate(['/panel'])
+  }
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];

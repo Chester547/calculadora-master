@@ -90,6 +90,10 @@ profile(){
   this.router.navigate(['/profile'])
 }
 
+panel(){
+  this.router.navigate(['/panel'])
+}
+
 logout(){
   this.authService.logout();
   this.router.navigate(['/']);

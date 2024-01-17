@@ -1,13 +1,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-  apiKey: "AIzaSyBOQxDitKj_eMtze7YBt3bRLts6VS1oz-0",
-  authDomain: "cuencainfo-35377.firebaseapp.com",
-  databaseURL: "https://cuencainfo-35377-default-rtdb.firebaseio.com",
-  projectId: "cuencainfo-35377",
-  storageBucket: "cuencainfo-35377.appspot.com",
-  messagingSenderId: "850354899081",
-  appId: "1:850354899081:web:48514f24b94c77172f9e58"
+  apiKey: "AIzaSyD9dMblVaGDMNyutoQwU5OJ0l-WQRQwQkU",
+  authDomain: "eventos-8c1cb.firebaseapp.com",
+  databaseURL: "https://eventos-8c1cb-default-rtdb.firebaseio.com",
+  projectId: "eventos-8c1cb",
+  storageBucket: "eventos-8c1cb.appspot.com",
+  messagingSenderId: "186461298628",
+  appId: "1:186461298628:web:215886d2ab4e68a3b40e91"
   },
   adminuid: 'NkHvXiRmJ2UC5RpWuZSReeUUBe62',
   
